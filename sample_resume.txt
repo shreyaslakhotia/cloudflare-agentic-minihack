@@ -1,0 +1,56 @@
+John Doe
+Senior Software Engineer
+Email: john.doe@example.com | Phone: (555) 123-4567
+LinkedIn: linkedin.com/in/johndoe | GitHub: github.com/johndoe
+
+PROFESSIONAL SUMMARY
+Results-driven Senior Software Engineer with 6+ years of experience building scalable cloud infrastructure and microservices. Expert in Python, Go, and cloud platforms (AWS, GCP). Proven track record of leading engineering teams and delivering high-impact solutions for millions of users.
+
+TECHNICAL SKILLS
+Languages: Python, Go, JavaScript, TypeScript, Java, SQL
+Frameworks: Django, Flask, FastAPI, React, Node.js, Express
+Cloud & DevOps: AWS (EC2, S3, Lambda, RDS, ECS), GCP, Docker, Kubernetes, Terraform, Jenkins, CI/CD
+Databases: PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch
+Tools: Git, JIRA, Datadog, Grafana, New Relic
+
+PROFESSIONAL EXPERIENCE
+
+Senior Software Engineer | Tech Corp | San Francisco, CA | Jan 2020 - Present
+• Architected and deployed microservices infrastructure serving 2M+ daily active users
+• Led team of 5 engineers, conducting code reviews and mentoring junior developers
+• Implemented Kubernetes-based deployment pipeline, reducing deployment time by 60%
+• Built real-time data processing system handling 1M+ events/day using Apache Kafka
+• Improved API response time by 40% through caching strategies and database optimization
+• Collaborated with product and design teams to ship 15+ features quarterly
+
+Software Engineer | Startup Inc | Austin, TX | Jun 2018 - Dec 2019
+• Developed RESTful APIs and backend services in Python/Django for fintech platform
+• Integrated AWS services (S3, Lambda, RDS) for file storage and async processing
+• Implemented OAuth2 authentication and role-based access control
+• Wrote comprehensive unit and integration tests achieving 85% code coverage
+• Participated in on-call rotation and resolved production incidents within SLA
+
+Junior Software Engineer | Innovation Labs | Remote | May 2017 - May 2018
+• Built web applications using React, Node.js, and PostgreSQL
+• Contributed to open-source projects and internal developer tools
+• Automated deployment processes using Docker and shell scripting
+
+EDUCATION
+
+Bachelor of Science in Computer Science | Stanford University | 2013 - 2017
+GPA: 3.8/4.0 | Dean's List (6 semesters)
+Relevant Coursework: Data Structures, Algorithms, Distributed Systems, Machine Learning, Database Systems
+
+CERTIFICATIONS
+• AWS Certified Solutions Architect - Associate (2022)
+• Certified Kubernetes Administrator (CKA) (2021)
+• Google Cloud Professional Cloud Architect (2020)
+
+PROJECTS
+• Open-source contributor to Django REST Framework (500+ stars on GitHub)
+• Built personal project: Real-time stock market dashboard using WebSockets and React
+• Hackathon winner: AI-powered code review tool using GPT-4 (2023)
+
+PUBLICATIONS
+• "Scaling Microservices: Lessons from Production" - Tech Corp Engineering Blog (2023)
+• Speaker at PyCon 2022: "Building High-Performance APIs with FastAPI"

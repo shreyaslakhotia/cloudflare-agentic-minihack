@@ -1,0 +1,12 @@
+[tool.poetry]
+name = "career-advice-platform"
+version = "0.1.0"
+description = "AI-powered career advice platform with multi-agent orchestration"
+authors = ["Your Name"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

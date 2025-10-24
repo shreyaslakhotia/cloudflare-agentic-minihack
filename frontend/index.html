@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Advice Platform</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+        }
+        .content { padding: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; }
+        input, textarea, select { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 6px; }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .progress-container { display: none; margin-top: 20px; }
+        .progress-bar { width: 100%; height: 30px; background: #e0e0e0; border-radius: 15px; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); transition: width 0.5s; }
+        .report-container { display: none; margin-top: 30px; }
+        .recommendation-card { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Career Advice Platform</h1>
+            <p>AI-Powered Career Guidance</p>
+        </header>
+        <div class="content">
+            <form id="submissionForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Resume (PDF/DOC/TXT)</label>
+                    <input type="file" name="resume" accept=".pdf,.doc,.docx,.txt">
+                </div>
+                <div class="form-group">
+                    <label>Job Description (Text or URL)</label>
+                    <textarea name="jd_text_or_url" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Your Career Goals</label>
+                    <textarea name="user_prompt" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Target Roles (comma-separated)</label>
+                    <input type="text" name="roles" placeholder="Software Engineer, Data Scientist">
+                </div>
+                <button type="submit">Start Analysis</button>
+            </form>
+            
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill">0%</div>
+                </div>
+                <p id="progressMessage">Initializing...</p>
+            </div>
+            
+            <div class="report-container" id="reportContainer">
+                <h2>Analysis Results</h2>
+                <div id="recommendations"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            
+            try {
+                const response = await fetch(`${API_BASE}/submit`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                
+                document.getElementById('progressContainer').style.display = 'block';
+                pollStatus(data.submission_id);
+            } catch (error) {
+                alert('Submission failed: ' + error.message);
+            }
+        });
+        
+        async function pollStatus(submissionId) {
+            const interval = setInterval(async () => {
+                try {
+                    const response = await fetch(`${API_BASE}/status/${submissionId}`);
+                    const status = await response.json();
+                    
+                    document.getElementById('progressFill').style.width = status.progress + '%';
+                    document.getElementById('progressFill').textContent = status.progress + '%';
+                    document.getElementById('progressMessage').textContent = status.message;
+                    
+                    if (status.state === 'completed') {
+                        clearInterval(interval);
+                        loadReport(submissionId);
+                    } else if (status.state === 'failed') {
+                        clearInterval(interval);
+                        alert('Analysis failed: ' + status.message);
+                    }
+                } catch (error) {
+                    console.error('Status check failed:', error);
+                }
+            }, 2000);
+        }
+        
+        async function loadReport(submissionId) {
+            document.getElementById('reportContainer').style.display = 'block';
+            document.getElementById('recommendations').innerHTML = '<p>Report generated successfully! Full report display to be implemented.</p>';
+        }
+    </script>
+</body>
+</html>

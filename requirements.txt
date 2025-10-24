@@ -1,0 +1,45 @@
+# Core Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# LangChain & AI
+langchain==0.1.4
+langchain-openai==0.0.5
+langchain-community==0.0.20
+openai==1.10.0
+
+# Document Processing
+pypdf==4.0.1
+python-docx==1.1.0
+python-multipart==0.0.6
+pdfplumber==0.10.3
+PyMuPDF==1.23.8
+
+# Web Scraping
+httpx==0.26.0
+beautifulsoup4==4.12.3
+aiohttp==3.9.1
+trafilatura==1.6.3
+lxml==5.1.0
+
+# Vector Store & Embeddings
+chromadb==0.4.22
+sentence-transformers==2.3.1
+
+# Caching & State
+redis==5.0.1
+hiredis==2.3.2
+
+# NLP & Analysis
+spacy==3.7.2
+textblob==0.17.1
+transformers==4.37.0
+
+# Utilities
+python-dotenv==1.0.1
+tenacity==8.2.3
+tiktoken==0.5.2
+python-dateutil==2.8.2
+requests==2.31.0
